@@ -1,0 +1,76 @@
+.cardModal {
+    position: absolute;
+    outline: none;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #e8f2f8;
+    width: 25vw;
+    box-shadow: 0px 22px 22px #dddbdb;
+    height: auto;
+    .modalHeader {
+        background: #ffffff;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+        font-size: 22px;
+    }
+    .cardModalForm {
+        width: 100%;
+        form {
+            width: 93%;
+            padding: 14px;
+            div {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 18px;
+            }
+            input {
+                height: 30px;
+                outline: none;
+                border: none;
+                width: 70%;
+                border-radius: 5px;
+            }
+        }
+    }
+    .listTitle {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 14px;
+    }
+    .listTitle p {
+        font-size: 20px;
+    }
+    .listTitle input {
+        height: 25px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        box-shadow: 1px 1px 1px 1px #dddbdb;
+    }
+    .modalHeader button {
+        border: none;
+        outline: none;
+        border-radius: 50%;
+        background: #2776d8;
+        height: 24px;
+        width: 25px;
+        color: #ffffff;
+        font-size: 14px;
+    }
+    form button {
+        background: #2776d8;
+        height: 25px;
+        width: 62px;
+        color: #ffffff;
+        border-radius: 7px;
+        font-size: 17px;
+        outline: none;
+        border: none;
+        margin-left: 42%;
+        margin-top: 20px;
+    }
+}
