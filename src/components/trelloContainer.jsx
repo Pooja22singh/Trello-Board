@@ -134,14 +134,18 @@ const TrelloContainer = () => {
         </div>
       </div>
       <div className="listContainer">
-        {trelloList?.map((item) => (
-          <TrelloList
-            key={`list${item.id}`}
-            list={item}
-            id={item.id}
-            updateTrelloList={updateTrelloList}
-          />
-        ))}
+        {trelloList.length > 0 ? (
+          trelloList?.map((item) => (
+            <TrelloList
+              key={`list${item.id}`}
+              list={item}
+              id={item.id}
+              updateTrelloList={updateTrelloList}
+            />
+          ))
+        ) : (
+          <div className="error"> No Lists Found</div>
+        )}
       </div>
       <div className="listModalContainer">
         <AddListModal
