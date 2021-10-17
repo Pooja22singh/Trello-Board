@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 /**
  * This method works for storing and fetching stuff from
@@ -12,7 +12,7 @@ export const useLocalStorage = (key, initial) => {
   const [data, setData] = useState(() => {
     if (window) {
       const saved = window.localStorage.getItem(key);
-      if (saved!==null && saved.length > 0) return JSON.parse(saved);
+      if (saved !== null && saved.length > 0) return JSON.parse(saved);
     }
     return initial;
   });

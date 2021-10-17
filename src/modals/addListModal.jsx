@@ -1,18 +1,30 @@
 import Modal from "react-modal";
-import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
 import "./styles/listModal.scss";
 
 export const AddListModal = ({ addNewList, isOpenModal, setIsOpenModal }) => {
   const [title, setTitle] = useState("");
-
+  
   const addList = () => {
-    setIsOpenModal(false);
-    addNewList(title);
+    if (title) {
+      setIsOpenModal(false);
+      addNewList(title);
+    }
+    else alert("Kindly add a title!");
+  };
+
+  const handleEnter = (e) => {
+    if (e.keyCode === 13) addList();
   };
 
   useEffect(() => {
+    Modal.setAppElement("body");
+  }, []);
+
+  useEffect(() => {
     setTitle("");
-  },[isOpenModal]);
+  }, [isOpenModal]);
 
   return (
     <Modal
@@ -24,16 +36,19 @@ export const AddListModal = ({ addNewList, isOpenModal, setIsOpenModal }) => {
       <div className="listModalContainer">
         <div className="modalHeader">
           <div>Add List</div>
-          <button onClick={() => setIsOpenModal(false)}>X</button>
+          <button type="button" onClick={() => setIsOpenModal(false)}>
+            X
+          </button>
         </div>
         <div className="listModalForm">
-          <form>
+          <form onSubmit={(event)=> event.preventDefault()}>
             <div className="listTitle">
               <p>Title: </p>
               <input
                 type="text"
                 value={title}
                 onChange={(event) => setTitle(event.target.value)}
+                onKeyUp={(e)=> handleEnter(e)}
               />
             </div>
             <button type="button" onClick={addList}>
@@ -44,4 +59,10 @@ export const AddListModal = ({ addNewList, isOpenModal, setIsOpenModal }) => {
       </div>
     </Modal>
   );
+};
+
+AddListModal.propTypes = {
+  addNewList: PropTypes.func.isRequired,
+  isOpenModal: PropTypes.bool.isRequired,
+  setIsOpenModal: PropTypes.func.isRequired,
 };

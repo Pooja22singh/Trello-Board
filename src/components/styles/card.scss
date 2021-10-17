@@ -6,6 +6,10 @@
     border-bottom: 1px solid lightgray;
     padding-right: 10px;
     align-items: center;
+    p {
+      overflow: hidden;
+      margin-left: 6px;
+     }
     button{
       background-color: #2776d8;
       width: 25px;

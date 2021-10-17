@@ -27,17 +27,18 @@
 .listContainer {
   margin: 20px;
   display: flex;
-  height: 100vh;
+  height: auto;
   p {
     margin: 0;
     padding: 14px 5px 10px 5px;
   }
   .list {
-    height: 70%;
+    height: auto;
     background-color: #f7f6f6;
     width: 20%;
     border-radius: 10px;
     margin-right: 17px;
+    padding-bottom: 10px;
     .listHeading {
       padding: 0px 10px 0px 10px;
       display: flex;
@@ -63,8 +64,8 @@
     .cardContainer {
       padding-left: 10px;
       padding-right: 10px;
-      padding-bottom: 10px;
-      height: 82%;
+      padding-bottom: 60px;
+      height: auto;
       .card {
         margin-top: 16px;
         border-radius: 15px;
