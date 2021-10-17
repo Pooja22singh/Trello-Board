@@ -144,7 +144,7 @@ const TrelloContainer = () => {
             />
           ))
         ) : (
-          <div className="error"> Click on Add List to Add new List</div>
+          <div className="error"> No Lists found. Click on Add List to continue</div>
         )}
       </div>
       <div className="listModalContainer">
