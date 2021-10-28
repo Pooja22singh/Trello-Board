@@ -1,7 +1,7 @@
 import { TrelloConstants } from "../constants/trelloConstants";
 import { data } from "../data/dummyData";
 
-const simulateCall = () => new Promise((resolve) => setTimeout(resolve, 100));
+const simulateCall = () => new Promise((resolve) => setTimeout(resolve, 5000));
 
 /**
  *

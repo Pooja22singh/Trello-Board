@@ -6,13 +6,14 @@ import "./styles/trelloContainer.scss";
 import { useLocalStorage } from "../customHooks/useLocalStorage";
 import { AddListModal } from "../modals/addListModal";
 import { TrelloConstants } from "../constants/trelloConstants";
+import { Loader } from "./Loader";
 
 const TrelloContainer = () => {
   const [trelloList, setTrelloList] = useLocalStorage("trelloList", []);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [nextCardId, setNextCardId] = useLocalStorage("cardId", size.cardId);
   const [nextListId, setNextListId] = useLocalStorage("listId", size.listId);
-
+  const [isLoading, setLoading] = useState(true);
   const updateTrelloList = (params) => {
     const {
       type,
@@ -110,12 +111,14 @@ const TrelloContainer = () => {
         setTrelloList(
           sortListOntime(data, TrelloConstants.SORT_BY_CREATION_TIME)
         );
+        setLoading(false);
       };
       if (!JSON.parse(window.localStorage.getItem("trelloList")).length) {
         getTrelloData();
       }
     } catch (e) {
       setTrelloList([]);
+      setLoading(false);
     }
   }, []);
 
@@ -133,7 +136,7 @@ const TrelloContainer = () => {
           </button>
         </div>
       </div>
-      <div className="listContainer">
+      { !isLoading && <div className="listContainer">
         {trelloList.length > 0 ? (
           trelloList?.map((item) => (
             <TrelloList
@@ -146,7 +149,8 @@ const TrelloContainer = () => {
         ) : (
           <div className="error"> No Lists found. Click on Add List to continue</div>
         )}
-      </div>
+      </div>}
+      {isLoading &&  <Loader/>}
       <div className="listModalContainer">
         <AddListModal
           addNewList={addNewList}
